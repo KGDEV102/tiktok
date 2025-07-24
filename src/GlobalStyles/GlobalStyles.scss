@@ -2,11 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
 
 html{
-    font-size: 62.5%;
+    font-size: 62.5%;  //10px 
 }
 body{
     font-family: 'IBM Plex Sans', san-serif;
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+*{
+    box-sizing: border-box;
 }

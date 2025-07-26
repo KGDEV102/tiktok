@@ -1,7 +1,7 @@
-function Following() {
+function Home() {
     return ( 
-        <h2>Following page</h2>
+        <h2>Home page</h2>
      );
 }
 
-export default Following;
+export default Home;

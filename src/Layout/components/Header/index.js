@@ -4,11 +4,12 @@ import { TiDelete } from "react-icons/ti";
 import React from 'react';
 import Tippy from '@tippyjs/react/headless'; 
 
+import { Wrapper as PopperWrapper } from "~/Layout/Popper";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
-import { Wrapper as PopperWrapper } from "~/Layout/Popper";
 import AccountItem from "~/Components/AccountItem/AccountItem";
+import Button from "../Button/Button";
 const cx = classNames.bind(styles);
 function Header() {
     return (
@@ -52,7 +53,7 @@ function Header() {
                </Tippy>
 
                 <div className={cx("action")}>
-
+                    <Button primary>Sign up</Button>
                 </div>
             </div>
         </header>

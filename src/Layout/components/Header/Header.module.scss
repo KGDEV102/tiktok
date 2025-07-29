@@ -57,6 +57,9 @@
 .search-result, .search{
     width: 361px;
 }
+.search-result{
+    transform: translateX(55px);
+}
 .clear,
 .loading{
    position: absolute;

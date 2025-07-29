@@ -19,9 +19,10 @@ function Header() {
                 <Tippy
                     interactive
                     visible
+                    
                     render={attrs => (
                         
-                        <div className={cx("search-result")} tabIndex="-1" {...attrs}> 
+                        <div className={cx("search-result")} tabIndex="-1" {...attrs} > 
                             
                             <PopperWrapper>
                                 <h4 className={cx("search-title")}>Accounts</h4>
@@ -53,7 +54,8 @@ function Header() {
                </Tippy>
 
                 <div className={cx("action")}>
-                    <Button primary>Sign up</Button>
+                    <Button text >Up load</Button>
+                    <Button outline rounded >Sign up</Button>
                 </div>
             </div>
         </header>

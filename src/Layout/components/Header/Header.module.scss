@@ -12,9 +12,11 @@
 .inner{
     width: var(--default-layout-width);
     display: flex;
+    padding: 0 var(--default-layout-horizontal-spacer);
     justify-content: space-between;
     align-items: center;
     height: 100%;
+    position: relative;
 }
 .search{
   
@@ -102,4 +104,5 @@
     margin-left: 28px;
     padding: 4px 8px;
     background-color: transparent;
+    cursor: pointer;
 }

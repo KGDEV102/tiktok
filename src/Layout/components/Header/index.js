@@ -19,7 +19,21 @@ const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
         title: "English",
-        icon: <GrLanguage />
+        icon: <GrLanguage />,
+        children: {
+            title: "Language",
+            data: [
+                {
+                    type:"language",
+                    code: "en",
+                    title:"English"
+                }, {
+                    type:"language",
+                    code: "vi",
+                    title:"Tiếng Việt"
+                }
+            ]
+        }
     },
     {
         title: "Feedback and help",
@@ -32,6 +46,15 @@ const MENU_ITEMS = [
         
     }
 ]
+const handleMenuChange = (menuItem) => {
+    switch (menuItem) {
+        case "language":
+            //Handle
+            break;
+        default:
+
+   }
+}
 function Header() {
     return (
         <header className={cx("wrapper")}>
@@ -40,7 +63,9 @@ function Header() {
                 <Tippy
                     interactive
                     visible
+                    placement="bottom-start"
                     
+                  
                     render={attrs => (
                         
                         <div className={cx("search-result")} tabIndex="-1" {...attrs} > 
@@ -77,7 +102,7 @@ function Header() {
                 <div className={cx("action")}>
                     <Button text >Up load</Button>
                     <Button outline rounded >Sign up</Button>
-                    <Menu items={MENU_ITEMS} >
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx("more-btn")}>
                             <BsThreeDotsVertical />
                         </button>

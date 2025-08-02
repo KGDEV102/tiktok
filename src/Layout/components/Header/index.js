@@ -2,12 +2,18 @@ import { BsSearch } from "react-icons/bs";
 import { FaSpinner } from "react-icons/fa6";
 import { TiDelete } from "react-icons/ti";
 import React from 'react';
-import Tippy from '@tippyjs/react/headless'; 
+
+import 'tippy.js/dist/tippy.css'; 
+import Tippy from '@tippyjs/react';
 import { GrLanguage } from "react-icons/gr";
 import { BsQuestionCircle } from "react-icons/bs";
 import { FaRegKeyboard } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
-
+import { MdOutlineCloudUpload } from "react-icons/md";
+import { FaRegUser } from "react-icons/fa";
+import { BsCoin } from "react-icons/bs";
+import { IoSettingsOutline } from "react-icons/io5";
+import { IoIosLogOut } from "react-icons/io";
 import { Wrapper as PopperWrapper } from "~/Layout/Popper";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
@@ -46,6 +52,32 @@ const MENU_ITEMS = [
         
     }
 ]
+const userMenu = [
+    {
+        icon:<FaRegUser />,
+        title: "View profile",
+        to:"/@kgdev"
+    },
+    {
+        icon:<BsCoin />,
+        title: "Get coin",
+        to:"/coin"
+    },
+    {
+        icon:<IoSettingsOutline />,
+        title: "Setting",
+        to:"/settings"
+    },
+    ...MENU_ITEMS,
+    {
+        icon:<IoIosLogOut />,
+        title: "Log out",
+        to: "/logout",
+        separate:true
+        
+    },
+
+]
 const handleMenuChange = (menuItem) => {
     switch (menuItem) {
         case "language":
@@ -55,6 +87,7 @@ const handleMenuChange = (menuItem) => {
 
    }
 }
+const currentUser = true;
 function Header() {
     return (
         <header className={cx("wrapper")}>
@@ -100,13 +133,41 @@ function Header() {
                </Tippy>
 
                 <div className={cx("action")}>
-                    <Button text >Up load</Button>
-                    <Button outline rounded >Sign up</Button>
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx("more-btn")}>
-                            <BsThreeDotsVertical />
-                        </button>
-                    </Menu>
+                    {currentUser ? (
+                    <>
+                       <Tippy content="Upload video" placement="bottom" trigger="click" >
+                            <button className={cx("action-btn")}>
+                                  <MdOutlineCloudUpload />  
+                            </button >
+                       </Tippy>
+                       
+                    </>
+                    ): (
+                        <>
+                            <Button text >Up load</Button>
+                            <Button primary >Sign up</Button>
+                        </>
+                    )}
+                    <Menu items={currentUser ?userMenu :MENU_ITEMS} onChange={handleMenuChange}>
+                    {currentUser ? (
+                      
+                            <img
+                                src="https://p9-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/d5450dffd6596cb0302441b62d5c2663~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=8e71a4ef&x-expires=1753786800&x-signature=bSYPVvJ681nEP9ok7dwNb6AiYqs%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
+                                alt="illustation of human"
+                                className={cx("user-avartar")}
+                            >
+                            </img>
+                       
+                    ): (
+                          
+                                 
+                            <button className={cx("more-btn")}>
+                                <BsThreeDotsVertical />
+                            </button>
+                        
+                           
+                        )}
+                        </Menu>
                 </div>
             </div>
         </header>

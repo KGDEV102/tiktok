@@ -15,12 +15,14 @@ import { BsCoin } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosLogOut } from "react-icons/io";
 import { Wrapper as PopperWrapper } from "~/Layout/Popper";
+import Image from "../Image";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
 import AccountItem from "~/Components/AccountItem/AccountItem";
 import Button from "../Button/Button";
 import Menu from "~/Layout/Popper/Menu/Menu";
+import { InboxIcon, MessageIcon, SearchIcon, UploadIcon } from "~/Layout/components/icons";
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
@@ -87,6 +89,7 @@ const handleMenuChange = (menuItem) => {
 
    }
 }
+const number_messeage = 10;
 const currentUser = true;
 function Header() {
     return (
@@ -127,7 +130,8 @@ function Header() {
                             <FaSpinner/>
                         </button>
                         <button className={cx("search-btn")}>
-                            <BsSearch/>
+                            {/* <BsSearch/> */}
+                            <SearchIcon/>
                         </button>
                     </div>
                </Tippy>
@@ -137,9 +141,19 @@ function Header() {
                     <>
                        <Tippy content="Upload video" placement="bottom" trigger="click" >
                             <button className={cx("action-btn")}>
-                                  <MdOutlineCloudUpload />  
+                                    {/* <MdOutlineCloudUpload />   */}
+                                    <UploadIcon/>
+                                   
+                                    
                             </button >
-                       </Tippy>
+                        </Tippy>
+                            <button className={cx("action-btn")}>
+                                 <MessageIcon />
+                            </button>
+                            <button className={cx("action-btn",)}>
+                                <InboxIcon />
+                                <span className={cx("number-msg")}>{number_messeage}</span>
+                            </button>
                        
                     </>
                     ): (
@@ -151,12 +165,13 @@ function Header() {
                     <Menu items={currentUser ?userMenu :MENU_ITEMS} onChange={handleMenuChange}>
                     {currentUser ? (
                       
-                            <img
+                            <Image
                                 src="https://p9-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/d5450dffd6596cb0302441b62d5c2663~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=8e71a4ef&x-expires=1753786800&x-signature=bSYPVvJ681nEP9ok7dwNb6AiYqs%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"
                                 alt="illustation of human"
                                 className={cx("user-avartar")}
+                                
                             >
-                            </img>
+                            </Image>
                        
                     ): (
                           

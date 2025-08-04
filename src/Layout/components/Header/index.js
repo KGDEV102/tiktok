@@ -1,6 +1,4 @@
-import { BsSearch } from "react-icons/bs";
-import { FaSpinner } from "react-icons/fa6";
-import { TiDelete } from "react-icons/ti";
+
 import React from 'react';
 
 import 'tippy.js/dist/tippy.css'; 
@@ -9,20 +7,21 @@ import { GrLanguage } from "react-icons/gr";
 import { BsQuestionCircle } from "react-icons/bs";
 import { FaRegKeyboard } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { MdOutlineCloudUpload } from "react-icons/md";
+
 import { FaRegUser } from "react-icons/fa";
 import { BsCoin } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosLogOut } from "react-icons/io";
-import { Wrapper as PopperWrapper } from "~/Layout/Popper";
+
 import Image from "../Image";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
-import AccountItem from "~/Components/AccountItem/AccountItem";
+
 import Button from "../Button/Button";
 import Menu from "~/Layout/Popper/Menu/Menu";
 import { InboxIcon, MessageIcon, SearchIcon, UploadIcon } from "~/Layout/components/icons";
+import Search from '../Search';
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
@@ -96,45 +95,7 @@ function Header() {
         <header className={cx("wrapper")}>
             <div className={cx("inner")}>
                 <img src={images.logo.default} />
-                <Tippy
-                    interactive
-                    visible
-                    placement="bottom-start"
-                    
-                  
-                    render={attrs => (
-                        
-                        <div className={cx("search-result")} tabIndex="-1" {...attrs} > 
-                            
-                            <PopperWrapper>
-                                <h4 className={cx("search-title")}>Accounts</h4>
-                                 <AccountItem />
-                                <AccountItem/>
-                            </PopperWrapper>
-                           
-                            </div>
-                       
-                    )}
-                >
-                    
-                    <div className={cx("search")}>
-                        <input
-                            placeholder="Search accounts and videos"
-                            spellCheck={false}
-                        >
-                        </input>
-                        <button className={cx("clear")}>
-                            <TiDelete/>
-                        </button>
-                        <button className={cx("loading")}>
-                            <FaSpinner/>
-                        </button>
-                        <button className={cx("search-btn")}>
-                            {/* <BsSearch/> */}
-                            <SearchIcon/>
-                        </button>
-                    </div>
-               </Tippy>
+                <Search/>
 
                 <div className={cx("action")}>
                     {currentUser ? (

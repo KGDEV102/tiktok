@@ -16,6 +16,7 @@ function Search() {
     const [searchValue, setSearchValue] = useState("");
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
+    const [loading, setLoading] = useState(false);
     const inputRef = useRef();
     const handleClear = () => {
         setSearchValue("");
@@ -27,10 +28,21 @@ function Search() {
         setShowResult(false);
     }
     useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1,2])
-        },0)
-    },[])
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
+        setLoading(true);
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then(res => res.json())
+            .then(result => {
+                setSearchResult(result.data);
+                setLoading(false);
+            })
+            .catch(() => {
+                setLoading(false);
+            })
+    },[searchValue])
     return (  
         <>
              <HeadlessTippy
@@ -45,8 +57,9 @@ function Search() {
                             
                             <PopperWrapper>
                                 <h4 className={cx("search-title")}>Accounts</h4>
-                                 <AccountItem />
-                                <AccountItem/>
+                                {searchResult.map(item => (
+                                    <AccountItem data={item} key={item.id} />
+                                ))}
                             </PopperWrapper>
                            
                             </div>
@@ -64,16 +77,16 @@ function Search() {
                         onFocus={()=>{setShowResult(true)}}
                         >
                         </input>
-                    {!!searchValue && (
+                    {!!searchValue && !loading && (
                         <button className={cx("clear")}
                             onClick={handleClear}
                         >
                             <TiDelete/>
                         </button>
                        )}
-                        <button className={cx("loading")}>
-                            {/* <FaSpinner/> */}
-                        </button>
+                       {loading && ( <button className={cx("loading")}>
+                            <FaSpinner/>
+                        </button>)}
                         <button className={cx("search-btn")}>
                             {/* <BsSearch/> */}
                             <SearchIcon/>

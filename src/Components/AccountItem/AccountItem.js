@@ -1,19 +1,20 @@
 import classNames from "classnames/bind";
 import styles from "./AccountItem.module.scss"
 import { BsCheckCircleFill } from 'react-icons/bs';
+import { Link } from "react-router-dom";
 import Image from "~/Layout/components/Image";
 const cx = classNames.bind(styles);
-function AccountItem() {
+function AccountItem({data}) {
     return ( 
-        <div className={cx("wrapper")}>
-            <Image className={cx("avartar")}alt="User Avatar" src="https://p9-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/d5450dffd6596cb0302441b62d5c2663~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=8e71a4ef&x-expires=1753786800&x-signature=bSYPVvJ681nEP9ok7dwNb6AiYqs%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my"></Image>
+        <Link to={`/@${data.nickname}`} className={cx("wrapper")}>
+            <Image className={cx("avartar")}alt="User Avatar" src={data.avatar}></Image>
             <div className={cx("infor")}>
-                <h4 className={cx("name")}>KGDEV
-                    <BsCheckCircleFill className={cx("check")}></BsCheckCircleFill>
+                <h4 className={cx("name")}>{data.full_name}
+                    {data.tick && (<BsCheckCircleFill className={cx("check")}></BsCheckCircleFill>)}
                 </h4>
-                <span className={cx("username")}>Phan Nguyễn Anh Kiệt</span>
+                <span className={cx("username")}>{ data.nickname}</span>
             </div>
-        </div>
+        </Link>
      );
 }
 

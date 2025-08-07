@@ -11,6 +11,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from "classnames/bind";
 import styles from "./Search.module.scss";
 import { useDebounce } from "~/hooks";
+import { search } from "~/ApiServices/searchServices";
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -35,15 +36,21 @@ function Search() {
             return;
         }
         setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
-            .then(res => res.json())
-            .then(result => {
-                setSearchResult(result.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                setLoading(false);
-            })
+        // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
+        //     .then(res => res.json())
+        //     .then(result => {
+        //         setSearchResult(result.data);
+        //         setLoading(false);
+        //     })
+        //     .catch(() => {
+        //         setLoading(false);
+        //     })
+        const fetchApi = async () => {
+            const result = await search(debounced);
+            setSearchResult(result);
+            setLoading(false);
+        }
+        fetchApi();
     },[debounced])
     return (  
         <>

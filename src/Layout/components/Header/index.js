@@ -7,12 +7,12 @@ import { GrLanguage } from "react-icons/gr";
 import { BsQuestionCircle } from "react-icons/bs";
 import { FaRegKeyboard } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
-
+import { Link } from 'react-router-dom';
 import { FaRegUser } from "react-icons/fa";
 import { BsCoin } from "react-icons/bs";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoIosLogOut } from "react-icons/io";
-
+import routes from '~/config/routes';
 import Image from "../Image";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
@@ -22,6 +22,7 @@ import Button from "../Button/Button";
 import Menu from "~/Layout/Popper/Menu/Menu";
 import { InboxIcon, MessageIcon, SearchIcon, UploadIcon } from "~/Layout/components/icons";
 import Search from '../Search';
+
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
@@ -94,7 +95,9 @@ function Header() {
     return (
         <header className={cx("wrapper")}>
             <div className={cx("inner")}>
-                <img src={images.logo.default} />
+                <Link to={routes.home}  className={cx("logo-link")}>
+                    <img src={images.logo.default} />
+                </Link>
                 <Search/>
 
                 <div className={cx("action")}>

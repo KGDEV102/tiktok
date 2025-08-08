@@ -60,54 +60,57 @@ function Search() {
     }
     return (  
         <>
-             <HeadlessTippy
-                    interactive
-                    visible={ showResult && searchResult.length > 0}
-                    placement="bottom-start"
-                    
-                    onClickOutside={handleHideResult}
-                    render={attrs => (
+            {/* Using a wrapper <div> or <span> tag around the reference element solves this by creating a new parentNode context.  */}
+             <div>
+                 <HeadlessTippy
+                        interactive
+                        visible={ showResult && searchResult.length > 0}
+                        placement="bottom-start"
                         
-                        <div className={cx("search-result")} tabIndex="-1" {...attrs} > 
+                        onClickOutside={handleHideResult}
+                        render={attrs => (
                             
-                            <PopperWrapper>
-                                <h4 className={cx("search-title")}>Accounts</h4>
-                                {searchResult.map(item => (
-                                    <AccountItem data={item} key={item.id} />
-                                ))}
-                            </PopperWrapper>
+                            <div className={cx("search-result")} tabIndex="-1" {...attrs} > 
+                                
+                                <PopperWrapper>
+                                    <h4 className={cx("search-title")}>Accounts</h4>
+                                    {searchResult.map(item => (
+                                        <AccountItem data={item} key={item.id} />
+                                    ))}
+                                </PopperWrapper>
+                               
+                                </div>
                            
-                            </div>
-                       
-                    )}
-                >
-                    
-                    <div className={cx("search")}>
-                        <input
-                            placeholder="Search accounts and videos"
-                        spellCheck={false}
-                        value={searchValue}
-                        onChange={handleChange}
-                        ref={inputRef}
-                        onFocus={()=>{setShowResult(true)}}
-                        >
-                        </input>
-                    {!!searchValue && !loading && (
-                        <button className={cx("clear")}
-                            onClick={handleClear}
-                        >
-                            <TiDelete/>
-                        </button>
-                       )}
-                       {loading && ( <button className={cx("loading")}>
-                            <FaSpinner/>
-                        </button>)}
-                        <button className={cx("search-btn")} onMouseDown={(e)=>{e.preventDefault()}}>
-                            {/* <BsSearch/> */}
-                            <SearchIcon/>
-                        </button>
-                    </div>
-               </HeadlessTippy>
+                        )}
+                    >
+                        
+                        <div className={cx("search")}>
+                            <input
+                                placeholder="Search accounts and videos"
+                            spellCheck={false}
+                            value={searchValue}
+                            onChange={handleChange}
+                            ref={inputRef}
+                            onFocus={()=>{setShowResult(true)}}
+                            >
+                            </input>
+                        {!!searchValue && !loading && (
+                            <button className={cx("clear")}
+                                onClick={handleClear}
+                            >
+                                <TiDelete/>
+                            </button>
+                           )}
+                           {loading && ( <button className={cx("loading")}>
+                                <FaSpinner/>
+                            </button>)}
+                            <button className={cx("search-btn")} onMouseDown={(e)=>{e.preventDefault()}}>
+                                {/* <BsSearch/> */}
+                                <SearchIcon/>
+                            </button>
+                        </div>
+                   </HeadlessTippy>
+             </div>
         </>
     );
 }

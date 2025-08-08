@@ -8,7 +8,8 @@
     width: var(--default-layout-width);
     background-color: #999;
     display: flex;
-   
+   margin-top: var(--default-layout-header-height);
+    height: 2000px;
 }
 .content{
     flex: 1;

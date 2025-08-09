@@ -11,7 +11,7 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import classNames from "classnames/bind";
 import styles from "./Search.module.scss";
 import { useDebounce } from "~/hooks";
-import { search } from "~/ApiServices/searchServices";
+import { search } from "~/Services/searchService";
 const cx = classNames.bind(styles);
 
 function Search() {

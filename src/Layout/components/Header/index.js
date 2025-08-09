@@ -17,7 +17,7 @@ import Image from "../Image";
 import classNames from "classnames/bind";
 import styles from "./Header.module.scss";
 import images from "~/assets/images";
-
+import config from "~/config/index";
 import Button from "../Button/Button";
 import Menu from "~/Layout/Popper/Menu/Menu";
 import { InboxIcon, MessageIcon, SearchIcon, UploadIcon } from "~/Layout/components/icons";
@@ -40,136 +40,7 @@ const MENU_ITEMS = [
                     code: "vi",
                     title:"Tiếng Việt"
                 }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
-                , {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }, {
-                    type:"language",
-                    code: "vi",
-                    title:"Tiếng Việt"
-                }
+               
             ]
         }
     },
@@ -225,7 +96,7 @@ function Header() {
     return (
         <header className={cx("wrapper")}>
             <div className={cx("inner")}>
-                <Link to={routes.home}  className={cx("logo-link")}>
+                <Link to={config.routes.home}  className={cx("logo-link")}>
                     <img src={images.logo.default} />
                 </Link>
                 <Search/>
@@ -241,14 +112,17 @@ function Header() {
                                     
                             </button >
                         </Tippy>
+                         <Tippy content="Message" placement="bottom" trigger="click" >
                             <button className={cx("action-btn")}>
                                  <MessageIcon />
-                            </button>
+                                </button>
+                        </Tippy>
+                        <Tippy content="Notifications" placement="bottom" trigger="click" >
                             <button className={cx("action-btn",)}>
                                 <InboxIcon />
                                 <span className={cx("number-msg")}>{number_messeage}</span>
                             </button>
-                       
+                        </Tippy>
                     </>
                     ): (
                         <>

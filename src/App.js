@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Following";
 import Following from "./pages/Home";
 import { publicRoutes } from "./routes";
-import { DefaultLayout } from "./Layout";
+import { DefaultLayout } from "./layouts";
 import { Fragment } from "react";
 function App() {
   return (

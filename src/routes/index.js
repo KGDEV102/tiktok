@@ -4,7 +4,7 @@ import Upload from "~/pages/Upload";
 import Profile from "~/pages/Profile";
 
 import config from "../config/index";
-import { HeaderOnly } from "~/Layout";
+import { HeaderOnly } from "~/layouts";
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },

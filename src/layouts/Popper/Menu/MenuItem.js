@@ -1,8 +1,10 @@
 
 import styles from "./Menu.module.scss";
 import classNames from "classnames/bind";
+import PropTypes from 'prop-types';
+import { data } from "react-router-dom";
 
-import Button from "~/Layout/components/Button/Button";
+import Button from "~/layouts/components/Button/Button";
 const cx = classNames.bind(styles);
 function MenuItem({ data, onClick }) {
     const classes = cx("menu-item", {
@@ -12,5 +14,8 @@ function MenuItem({ data, onClick }) {
         <Button leftIcon={data.icon} to={data.to} className={classes} onClick={onClick}>{ data.title}</Button>
      );
 }
-
+MenuItem.propTypes = {
+    data: PropTypes.object.isRequired,
+    onClick : PropTypes.func,
+}
 export default MenuItem;

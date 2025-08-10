@@ -2,7 +2,8 @@ import classNames from "classnames/bind";
 import styles from "./AccountItem.module.scss"
 import { BsCheckCircleFill } from 'react-icons/bs';
 import { Link } from "react-router-dom";
-import Image from "~/Layout/components/Image";
+import PropTypes from 'prop-types'; 
+import Image from "~/layouts/components/Image";
 const cx = classNames.bind(styles);
 function AccountItem({data}) {
     return ( 
@@ -17,5 +18,7 @@ function AccountItem({data}) {
         </Link>
      );
 }
-
+AccountItem.propTypes = {
+    data: PropTypes.object.isRequired,
+};
 export default AccountItem;

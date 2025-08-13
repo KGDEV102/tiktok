@@ -3,6 +3,7 @@ import styles from "./Sidebar.module.scss";
 import Menu, { MenuItem } from "./Menu";
 import config from "~/config";
 import { HomeActiveIcon, HomeIcon, LiveActiveIcon, LiveIcon, UserGroupActiveIcon, UserGroupIcon } from "~/layouts/components/icons";
+import SuggestedAccounts from "~/layouts/components/SuggestedAccounts";
 const cx = classNames.bind(styles);
 function Siderbar() {
     return (
@@ -14,6 +15,7 @@ function Siderbar() {
                 <MenuItem title="For You" to={config.routes.live} icon={<LiveIcon/>} activeIcon={<LiveActiveIcon/>}></MenuItem>
             </Menu>
         
+            <SuggestedAccounts label="Suggest Accounts"/>
         </aside>
     );
 }
